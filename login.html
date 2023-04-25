@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LineLogin</title>
+</head>
+<body>
+<button onclick="login()">Login</button>
+<script>
+    let time = new Date().getTime();
+    let url = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1660971472&redirect_uri=https://toidicodedao2022.github.io&state=${time}&scope=profile%20openid`
+
+    let login = function (){
+        window.location.href = url;
+    }
+</script>
+</body>
+</html>
