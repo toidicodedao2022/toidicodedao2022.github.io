@@ -6,9 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <body>
+<textarea id="access_token">
+
+</textarea>
     <script>
-    console.log(window.location.href)
+        //?code=WyOlfFHRLATirTYXMTQY&state=1682393889916
+
+        document.addEventListener("DOMContentLoaded",function (){
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let code = urlParams.get('code')
+            $.ajax({
+                url:'https://api.line.me/oauth2/v2.1/token',
+                type:"POST",
+                dataType:"JSON",
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                contentType: "application/json",
+                data:`code=${code}&redirect_uri=https://toidicodedao2022.github.io&client_id=1660971472&client_secret=ab2f15a6c4a6d24f26f1823b6c330f94&grant_type=authorization_code`,
+                success:function (res){
+                    console.log(res)
+                    $('#access_token').html(res.access_token).val(res.access_token)
+                }
+            }).fail(function (error){
+                console.error(error)
+            })
+        })
+
+
     </script>
 </body>
 </html>
